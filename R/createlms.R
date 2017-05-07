@@ -49,12 +49,13 @@ prepare_data <- function(data, group = NULL, subject = "SIC", sex = NULL, value 
 ##' @param data dataframe as returned by prepare data
 ##' @param prop proportion of families to be sampled
 ##' @param group name of the group variable (character) if not "group", ignored
+##' @param verbose if TRUE information about sample size is printed out
 ##' @return dataframe containing only prop.fam percent the families in data
 ##' @author Mandy Vogel
 ##' @export
-select_fams <- function(data, prop = 0.75, group){
+select_fams <- function(data, prop = 0.75, group, verbose = F){
     if(sum(is.na(data$group)) > 0) {
-        print("Missing group variable. Returning original data set.")
+        if(verbose) print("select_fams: Missings in group variable. Returning original data set.")
         return(data)}
     weights <- dplyr::group_by(data, group) %>% dplyr::summarise(n=dplyr::n(), wgt = 1-1/(dplyr::n()+1))
     weights <- weights$group[sample(1:nrow(weights),size = (nrow(weights) * prop), prob = weights$wgt)]
@@ -105,9 +106,15 @@ select_meas <- function(data, subject = "subject", prop = 1, verbose = F){
 ##' @author Mandy Vogel
 fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, dist = "BCCGo",
                        mu.df = 4,sigma.df = 3, nu.df = 2, tau.df = 2, value){
-    tr.obj <- try(mm <- lms(value, age, data = data[,-grep("group",names(data))],
+    tr.obj <- try(mm <- gamlss::lms(value, age, data = data[,-grep("group",names(data))],
                             families = dist,method.pb = "ML", k = 2,trace = F,
-                            sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df))
+                            mu.df = mu.df, sigma.df = sigma.df, nu.df = nu.df, tau.df = tau.df))
+    if("try-error" %in% class(tr.obj) ){
+        tr.obj <- try(mm <- gamlss::lms(value, age, data = data[,-grep("group",names(data))],
+                                        families = dist,method.pb = "ML", k = 2,trace = F,
+                                        mu.df = mu.df, sigma.df = sigma.df, nu.df = 1, tau.df = 1)) 
+    }
+    if(!exists("mm") || is.null(mm)) invisible(return(NULL)) 
     age <- seq(age.min, age.max, by = age.int)
     if (mm$family[1] == dist & !("try-error" %in% class(tr.obj))) {
         lms <- as.data.frame(gamlss::predictAll(mm,
@@ -126,16 +133,16 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, dist 
 ##' @param data.list list of dataframes as returned by prepare_data
 ##' @param prop.fam proportion of families to be sampled
 ##' @param prop.subject proportion of subject to be sampled
+##' @param verbose whether or not information about sampling will be printed during while iterate 
 ##' @inheritParams fit_gamlss
 ##' @return list of lists each containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 ##' @author Mandy Vogel
 ##' @export
 one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
-                          dist = "BCCGo", sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2){
-    if(sum(is.na(data.list[[1]]$group)) > 0) print("no grouping variable is given. Therefore, no grouping will be done.")
-    tmp.l <- lapply(data.list, select_fams, prop = prop.fam)
-    tmp.l <- lapply(tmp.l, select_meas, prop = prop.subject)
-    lapply(tmp.l, fit_gamlss, dist = dist, sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df )
+                          dist = "BCCGo", sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2, verbose = F){
+    tmp.l <- lapply(data.list, select_fams, prop = prop.fam, verbose = verbose)
+    tmp.l <- lapply(tmp.l, select_meas, prop = prop.subject, verbose = verbose)
+    lapply(tmp.l, fit_gamlss, dist = dist, sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df, age.min = age.min, age.max = age.max )
 }
 
 ##' Do lms iterations 
@@ -143,23 +150,47 @@ one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min 
 ##' function samples families, samples measurements (and subjects), fits the model for a
 ##' given number of iterations
 ##' @title do lms iterations    
-##' @param n number of iterations
+##' @param n number of desired fits
+##' @param max.it maximum number of iterations that will be run
+##' @param verbose whether or not information about sampling will be printed during while iterate
 ##' @inheritParams one_iteration
 ##' @return list of lists for models and fitted parameters
 ##' @author Mandy Vogel
 ##' @export
-do_iterations <- function(data.list, n = 10, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
-                          dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2){
+do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
+                          dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F){
+    range.age <- range(unlist(lapply(data.list, function(df) df$age)))
+    if(age.min < (range.age[1] - 0.005*range.age[1])) {
+        age.min <- range.age[1]
+        print(paste("requested age.min is smaller than max age in the data. set age.min to min(age):", round(age.min,2)))}
+    if(age.max > (range.age[2] + 0.005*range.age[2])){
+        age.max <- range.age[2]
+        print(paste("requested age.max is greater than age range in data. set age.max to max(age):", round(age.max,2)))
+    } 
+    if(sum(is.na(data.list[[1]]$group)) > 0) print("no grouping variable is given. Therefore, no grouping will be done.")
     sexes <- names(data.list)
     res <- list()
-    for(i in 1:n){
-        res[[length(res) + 1]] <- one_iteration(data.list = data.list,
-                                                dist = dist,
-                                                mu.df = mu.df,
-                                                sigma.df = sigma.df,
-                                                nu.df = nu.df,
-                                                tau.df = tau.df,
-                                                prop.fam = prop.fam)
+    i <- 1
+    counter <- as.data.frame(t(numeric(length(sexes))))
+    names(counter) <- sexes
+    while(i <= max.it & min(counter[1,]) < n ){
+        tmp.res <- one_iteration(data.list = data.list,
+                                 dist = dist,
+                                 mu.df = mu.df,
+                                 sigma.df = sigma.df,
+                                 nu.df = nu.df,
+                                 tau.df = tau.df,
+                                 prop.fam = prop.fam,
+                                 age.min = age.min,
+                                 age.max = age.max,
+                                 verbose = verbose)
+        fit_succ <- as.data.frame(lapply(tmp.res, function(x) !is.null(x)))
+        counter <- as.data.frame(t(colSums(dplyr::bind_rows(counter,fit_succ))))
+        print(fit_succ)
+        print(counter)         
+        res[[length(res) + 1]] <- tmp.res
+        print(paste(i,"iterations done."))
+        i <- i + 1 
     }
     lms <- lapply(sexes, function(sex) {
         lms <- lapply(res, function(x) x[[sex]]$lms)
@@ -197,3 +228,55 @@ aggregate_lms <- function(lms.list){
     lms.agg
 }
 
+
+##' Calculate confidence intervals
+##'
+##' The function takes a lms list as returned by \code{\link{do_iterations}} and
+##' calculates the confidence bands for a given set of percentiles using
+##' \code{\link[boot]{envelope}} from the boot package 
+##' @title Calculate confidence intervals
+##' @param lms.list lms part of the returned list of \code{\link{do_iterations}}
+##' @param perc percentiles for which the confidence bands are calculated
+##' @param level confidence level
+##' @param type for now only point is a valid value
+##' @return list containing the respective confidence envelopes
+##' @author mandy
+##' @export
+calc_confints <- function(lms.list, perc = c(2.5,5,50,95,97.5), level = 0.95, type = c("point")){
+    dist <- "BCPE"
+    nam <- paste(sprintf("perc_%02d",floor(perc)),
+                 gsub("0.","", perc-floor(perc)), sep = "_") 
+    perc <- perc/100
+    sexes <- names(lms.list)
+    lapply(sexes, function(sex){
+        res.l <- list()
+        for(i in 1:length(lms.list[[sex]])){
+            sex.df <- lms.list[[sex]][[i]]
+            perc.values <-  lapply(perc, function(p, sex.df){
+                eval(parse(
+                    text = paste0("gamlss.dist::q",dist,"(",p,",",
+                                  paste(
+                                      paste0(names(sex.df)[-which(names(sex.df) == "age")],
+                                             "=sex.df$",
+                                             names(sex.df)[-which(names(sex.df) == "age")]) ,
+                                      collapse = ","),
+                                  ")")))}, sex.df = sex.df)
+            names(perc.values) <- nam
+            perc.values$age <- sex.df$age
+            perc.values$sex <- sex
+            res.l[[length(res.l) + 1]] <- as.data.frame(perc.values, stringsAsFactors = F)                
+        }
+        confenv <- lapply(nam, function(perc){
+            pm <- sapply(res.l, function(xx, perc){
+                xx[,perc]
+            }, perc = perc)
+            pm <- as.data.frame(t(boot::envelope(mat = t(pm))[[type]]))
+            names(pm) <- c("upper","lower")
+            pm
+        })
+        names(confenv) <- nam
+        confenv
+    })
+}
+
+ 

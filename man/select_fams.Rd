@@ -4,7 +4,7 @@
 \alias{select_fams}
 \title{select families}
 \usage{
-select_fams(data, prop = 0.75, group)
+select_fams(data, prop = 0.75, group, verbose = F)
 }
 \arguments{
 \item{data}{dataframe as returned by prepare data}
@@ -12,6 +12,8 @@ select_fams(data, prop = 0.75, group)
 \item{prop}{proportion of families to be sampled}
 
 \item{group}{name of the group variable (character) if not "group", ignored}
+
+\item{verbose}{if TRUE information about sample size is printed out}
 }
 \value{
 dataframe containing only prop.fam percent the families in data
