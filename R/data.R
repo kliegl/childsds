@@ -141,3 +141,21 @@ NULL
 NULL
 
 
+#' Parameters derived from the German KiGGS cohort
+#' @name kiggs_bp.ref
+#' @docType data
+#' @usage kiggs_bp.ref
+#' @details contains 2-dimensional reference grid. Do not use with \code{\link{sds}} but \code{\link{sds_2d}}
+#' @source Neuhauser, H. K., Thamm, M., Ellert, U., Hense, H. W. & Rosario, A. S. Blood Pressure Percentiles by Age and Height from Nonoverweight Children and Adolescents in Germany. Pediatrics peds.2010-1290 (2011). doi:10.1542/peds.2010-1290.
+NULL
+
+
+
+#' Parameters derived from Flandern population
+#' @name belgium.ref
+#' @docType data
+#' @usage belgium.ref
+#' @source Roelants M, Hauspie R, Hoppenbrouwers K. References for growth and pubertal development from birth to 21 years in Flanders, Belgium. Annals of Human Biology. 2009 Dezember;36(6):680–94.
+NULL
+
+
