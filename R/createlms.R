@@ -87,26 +87,27 @@ select_meas <- function(data, subject = "subject", prop = 1, verbose = F){
     data
 }
 
-##' fit lms
-##'
-##' wrapper around the \code{\link[gamlss]{lms}} function in the gamlss package
-##' returns the fitted lms-parameter at given age points
-##' the function is called inside \code{\link{do_iterations}} and may not called directly
-##' @title fit lms
-##' @param data dataframe as return by select_meas()
-##' @param age.min lower bound of age
-##' @param age.max upper bound of age
-##' @param age.int stepwidth of the age variable
-##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
-##' @param mu.df degree of freedem location parameter
-##' @param sigma.df degree of freedem spread parameter
-##' @param nu.df degree of freedem skewness parameter
-##' @param tau.df degree of freedem kurtosis parameter
-##' @param value names of the value variable (character) if different from value, ignored
-##' @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
-##' @author Mandy Vogel
-fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, dist = "BCCGo",
-                       mu.df = 4,sigma.df = 3, nu.df = 2, tau.df = 2, value){
+## fit lms
+##
+## wrapper around the \code{\link[gamlss]{lms}} function in the gamlss package
+## returns the fitted lms-parameter at given age points
+## the function is called inside \code{\link{do_iterations}} and may not called directly
+## @title fit lms
+## @param data dataframe as return by select_meas()
+## @param age.min lower bound of age
+## @param age.max upper bound of age
+## @param age.int stepwidth of the age variable
+## @param keep.models indicator whether or not models in each iteration should be kept
+## @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+## @param mu.df degree of freedem location parameter
+## @param sigma.df degree of freedem spread parameter
+## @param nu.df degree of freedem skewness parameter
+## @param tau.df degree of freedem kurtosis parameter
+## @param value names of the value variable (character) if different from value, ignored
+## @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
+## @author Mandy Vogel
+fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.models = F,
+                       dist = "BCCGo", mu.df = 4,sigma.df = 3, nu.df = 2, tau.df = 2, value){
     tr.obj <- try(mm <- gamlss::lms(value, age, data = data[,-grep("group",names(data))],
                             families = dist,method.pb = "ML", k = 2,trace = F,
                             mu.df = mu.df, sigma.df = sigma.df, nu.df = nu.df, tau.df = tau.df))
@@ -122,6 +123,7 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, dist 
                                         newdata = data.frame(age = age)))
         lms$age <- age
         lms %<>% dplyr::select(age, dplyr::everything())
+        if(!keep.models) mm <- NULL
         return(list(lms = lms, model = mm))
     }
     invisible(return(NULL))
@@ -134,16 +136,26 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, dist 
 ##' @param data.list list of dataframes as returned by prepare_data
 ##' @param prop.fam proportion of families to be sampled
 ##' @param prop.subject proportion of subject to be sampled
-##' @param verbose whether or not information about sampling will be printed during while iterate 
-##' @inheritParams fit_gamlss
+##' @param verbose whether or not information about sampling will be printed during while iterate
+##' @param age.min lower bound of age
+##' @param age.max upper bound of age
+##' @param age.int stepwidth of the age variable
+##' @param keep.models indicator whether or not models in each iteration should be kept
+##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+##' @param mu.df degree of freedem location parameter
+##' @param sigma.df degree of freedem spread parameter
+##' @param nu.df degree of freedem skewness parameter
+##' @param tau.df degree of freedem kurtosis parameter
 ##' @return list of lists each containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 ##' @author Mandy Vogel
 ##' @export
 one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
-                          dist = "BCCGo", sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2, verbose = F){
+                          keep.models = F, dist = "BCCGo", sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2, verbose = F){
     tmp.l <- lapply(data.list, select_fams, prop = prop.fam, verbose = verbose)
     tmp.l <- lapply(tmp.l, select_meas, prop = prop.subject, verbose = verbose)
-    lapply(tmp.l, fit_gamlss, dist = dist, sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df, age.min = age.min, age.max = age.max )
+    lapply(tmp.l, fit_gamlss, dist = dist, keep.models = keep.models,
+           sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df,
+           age.min = age.min, age.max = age.max )
 }
 
 ##' Do lms iterations 
@@ -158,15 +170,16 @@ one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min 
 ##' @return list of lists for models and fitted parameters
 ##' @author Mandy Vogel
 ##' @export
-do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
+do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, prop.subject = 1,
+                          age.min = 0, age.max = 18, age.int = 1/12,keep.models = F,
                           dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F){
     range.age <- range(unlist(lapply(data.list, function(df) df$age)))
-    if(age.min < (range.age[1] - 0.005*range.age[1])) {
-        age.min <- range.age[1]
-        print(paste("requested age.min is smaller than max age in the data. set age.min to min(age):", round(age.min,2)))}
-    if(age.max > (range.age[2] + 0.005*range.age[2])){
-        age.max <- range.age[2]
-        print(paste("requested age.max is greater than age range in data. set age.max to max(age):", round(age.max,2)))
+    if(age.min < (range.age[1] - 0.01*range.age[1])) {
+        age.min <- find.nearest.month(range.age[1])
+        print(paste("requested age.min is smaller than max age in the data. set age.min to min(age):", round(find.nearest.month(range.age[1]),2)))}
+    if(age.max > (range.age[2] + 0.01*range.age[2])){
+        age.max <- find.nearest.month(range.age[2])
+        print(paste("requested age.max is greater than age range in data. set age.max to max(age):", round(find.nearest.month(range.age[2]),2)))
     } 
     if(sum(is.na(data.list[[1]]$group)) > 0) print("no grouping variable is given. Therefore, no grouping will be done.")
     sexes <- names(data.list)
@@ -177,6 +190,7 @@ do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, pro
     while(i <= max.it & min(counter[1,]) < n ){
         tmp.res <- one_iteration(data.list = data.list,
                                  dist = dist,
+                                 keep.models = keep.models,
                                  mu.df = mu.df,
                                  sigma.df = sigma.df,
                                  nu.df = nu.df,
@@ -185,7 +199,7 @@ do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, pro
                                  age.min = age.min,
                                  age.max = age.max,
                                  verbose = verbose)
-        fit_succ <- as.data.frame(lapply(tmp.res, function(x) !is.null(x)))
+        fit_succ <- as.data.frame(lapply(tmp.res, function(x) as.numeric(!is.null(x))))
         counter <- as.data.frame(t(colSums(dplyr::bind_rows(counter,fit_succ))))
         print(fit_succ)
         print(counter)         
@@ -200,11 +214,15 @@ do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, pro
     names(lms) <- sexes
     print(paste("fitted out of", n, "iterations:"))
     print(sapply(lms, length))
-    models <- lapply(sexes, function(sex) {
-        models <- lapply(res, function(x) x[[sex]]$model)
-        lapply(models, function(ls) ls[sapply(ls, function(x) !is.null(x))])
-    })
-    names(models) <- sexes
+    if( keep.models ){
+        models <- lapply(sexes, function(sex) {
+            models <- lapply(res, function(x) x[[sex]]$model)
+            lapply(models, function(ls) ls[sapply(ls, function(x) !is.null(x))])
+        })
+        names(models) <- sexes
+    } else {
+        models <- NULL
+    }
     attr(lms, "distribution") <- dist
     list(lms = lms, models = models)
 
@@ -281,3 +299,18 @@ calc_confints <- function(lms.list, perc = c(2.5,5,50,95,97.5), level = 0.95, ty
 }
 
  
+
+## find nearest month
+##
+## in the iteration process I assume age given in years
+## and try to set the min and max age to full month 
+## @param x - original age
+## @return numeric - the nearest full month
+## @author mandy
+find.nearest.month <- function(x){
+    full <- x %/% 1
+    rem <- x %% 1
+    ind <- which.min(abs(rem-0:11/12))
+    rem <- (0:11/12)[ind]
+    full + rem
+}
