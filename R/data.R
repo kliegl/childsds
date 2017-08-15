@@ -65,6 +65,8 @@ NULL
 #' @docType data
 #' @usage turkish.ref
 #' @source Hatipoglu, N. et al. Waist circumference percentiles for 7- to 17-year-old Turkish children and adolescents. Eur J Pediatr 167, 383--389 (2008);Bundak, R. et al. Body mass index references for Turkish children. Acta Pædiatrica 95, 194--198 (2006).
+#' @source Neyzi, O., Furman, A., Bundak, R., Gunoz, H., Darendeliler, F., Bas, F., 2006. Growth references for Turkish children aged 6 to 18 years. Acta Pædiatrica 95, 1635–1641. doi:10.1080/08035250600652013
+#' @source Bundak, R. et al. Body mass index references for Turkish children. Acta Paediatrica 95, 194-198 (2006).
 NULL
 
 
@@ -88,8 +90,8 @@ NULL
 #' @name saudi.ref
 #' @docType data
 #' @usage saudi.ref
-#' @source
-#' Mouzan, M. I. E., Salloum, A. A. A., Alqurashi, M. M., Herbish, A. S. A. & Omar, A. A. The LMS and Z scale growth reference for Saudi school-age children and adolescents. Saudi Journal of Gastroenterology 22, 331 (2016)
+#' @source Mouzan, M. I. E., Salloum, A. A. A., Alqurashi, M. M., Herbish, A. S. A. & Omar, A. A. The LMS and Z scale growth reference for Saudi school-age children and adolescents. Saudi Journal of Gastroenterology 22, 331 (2016)
+#' @source Shaik, S.A., El Mouzan, M.I., AlSalloum, A.A., AlHerbish, A.S., 2016. Growth reference for Saudi preschool children: LMS parameters and percentiles. Ann Saudi Med 36, 2–6. doi:10.5144/0256-4947.2016.2
 NULL
 
 
@@ -165,4 +167,47 @@ NULL
 #' @source Ramírez-Vélez, R. et al. Triceps and Subscapular Skinfold Thickness Percentiles and Cut-Offs for Overweight and Obesity in a Population-Based Sample of Schoolchildren and Adolescents in Bogota, Colombia. Nutrients 8, (2016).
 NULL
 
+
+#' Parameters of skinfold measures derived from Colombian population 
+#' @name who2007.ref
+#' @docType data
+#' @usage who2007.ref
+#' @source Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660–667.
+NULL
+
+
+#' Parameters of skinfold measures derived from Colombian population 
+#' @name nl3.ref
+#' @docType data
+#' @usage nl3.ref
+#' @source Fredriks, A. M. et al. Continuing positive secular growth change in The Netherlands 1955–1997. Pediatric research 47, 316–323 (2000).
+#' @source Fredriks, A.M., van Buuren, S., Wit, J.M., Verloove-Vanhorick, S.P., 2000. Body index measurements in 1996–7 compared with 1980. Archives of disease in childhood 82, 107–112.
+#' @source https://cran.r-project.org/package=AGD
+NULL
+
+
+#' Parameters of serum insulin-like growth factor-I (IGF-I) 
+#' @name japan_lab.ref
+#' @docType data
+#' @usage japan_lab.ref
+#' @source Isojima, T., Shimatsu, A., Yokoya, S., Chihara, K., Tanaka, T., Hizuka, N., Teramoto, A., Tatsumi, K., Tachibana, K., Katsumata, N., Horikawa, R., 2012. Standardized centile curves and reference intervals of serum insulin-like growth factor-I (IGF-I) levels in a normal Japanese population using the LMS method. Endocrine Journal 59, 771–780. doi:10.1507/endocrj.EJ12-0110
+NULL
+
+
+#' International Laboratory Parameters Tables
+#' @name international_lab.ref
+#' @docType data
+#' @usage international_lab.ref
+#' @source Bidlingmaier, M., Friedrich, N., Emeny, R.T., Spranger, J., Wolthers, O.D., Roswall, J., Körner, A., Obermayer-Pietsch, B., Hübener, C., Dahlgren, J., others, 2014. Reference intervals for insulin-like growth factor-1 (IGF-I) from birth to senescence: results from a multicenter study using a new automated chemiluminescence IGF-I immunoassay conforming to recent international recommendations. The Journal of Clinical Endocrinology & Metabolism 99, 1712–1721.
+#' @source Friedrich, N., Wolthers, O.D., Arafat, A.M., Emeny, R.T., Spranger, J., Roswall, J., Kratzsch, J., Grabe, H.J., Hübener, C., Pfeiffer, A.F.H., Döring, A., Bielohuby, M., Dahlgren, J., Frystyk, J., Wallaschofski, H., Bidlingmaier, M., 2014. Age- and Sex-Specific Reference Intervals Across Life Span for Insulin-Like Growth Factor Binding Protein 3 (IGFBP-3) and the IGF-I to IGFBP-3 Ratio Measured by New Automated Chemiluminescence Assays. The Journal of Clinical Endocrinology & Metabolism 99, 1675–1686. doi:10.1210/jc.2013-3060
+NULL
+
+
+#' Parameters Preterm and  Intrauterine
+#' @name preterm.ref
+#' @docType data
+#' @usage preterm.ref
+#' @source Olsen, I.E., Lawson, M.L., Ferguson, A.N., Cantrell, R., Grabich, S.C., Zemel, B.S., Clark, R.H., 2015. BMI Curves for Preterm Infants. PEDIATRICS 135, e572–e581. doi:10.1542/peds.2014-2777
+#' @source Olsen, I.E., Groveman, S.A., Lawson, M.L., Clark, R.H., Zemel, B.S., 2010. New intrauterine growth curves based on United States data. Pediatrics 125, e214-224. doi:10.1542/peds.2009-0913
+NULL
 

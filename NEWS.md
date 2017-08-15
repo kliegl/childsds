@@ -1,3 +1,14 @@
+# childsds 0.6.5
+## Major changes
+* add who 2007 reference tables
+* add nl3 reference tables
+* add preterm reference tables
+* add turkish reference tables height, weight
+* add igf international and japan
+* add saudi arabian preschool references
+## Bug fixes
+* removes class labelled from who references
+* add missing argument to one_it inside do_iterations
 # childsds 0.6.4
 ## Major changes
 * add colombian skinfold references
