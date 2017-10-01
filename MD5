@@ -1,8 +1,8 @@
-20de17c4cc42026885f60902f1a46a1e *DESCRIPTION
+b17e14c2ac1975ea208cbce984ffa561 *DESCRIPTION
 4e3c8372725baae4d32645d84926056e *NAMESPACE
-e65a1d8d6b80a5b75f70b0493e5e2db4 *NEWS.md
+36e425db91bebb072d0991f5c12a312f *NEWS.md
 eb338715bc0cfe4aa5e4e314cd3da25a *R/createlms.R
-d073686c983ce17ad576bcb89887739f *R/data.R
+3b9dd9d8d3096b0df72e27dc54029e01 *R/data.R
 35388ecc0fa946e7dd5cdb05cb8ccc30 *R/misc.R
 e706c4e957759fd17c8fe51d8b727544 *R/refsclass.r
 8d8fc5b329494b6f83dfbb9d2d62d053 *R/sdsvals.r
@@ -20,6 +20,7 @@ f9b234886ed7ed59043394e77e65294a *data/japanese.ref.rda
 04b7499003b750bf5fc0fd32cda9b5e6 *data/kiggs.ref.rda
 fad38b0ccd16fa0f43362e54b9dda2fe *data/kiggs_bp.ref.rda
 cd88c444dd2b411286eb472003fb3222 *data/kro.ref.rda
+01ec4fd67ae7f3fc74c01d7a7f2cd4b7 *data/life_liver.ref.rda
 f53cb2aae7f496de12a60f71b625b1ec *data/lipids.ref.rda
 7bc5761c0906b71d9c2db788f0a56e06 *data/nl3.ref.rda
 79b81ffced0214dbea04a872baa0d2fb *data/nl4.ref.rda
@@ -27,6 +28,7 @@ f53cb2aae7f496de12a60f71b625b1ec *data/lipids.ref.rda
 8cae001530e5982ee95623de00a52c1a *data/preterm.ref.rda
 e5e51d055e2b49188145f98908ee335d *data/saudi.ref.rda
 3572984f2fd554478d08fa3bc0f699c7 *data/turkish.ref.rda
+058629fb7c16f2625d42671a7b9a3158 *data/uk1990.ref.rda
 65eb6302845d4627ec4f5269d8e1d008 *data/ukwho.ref.rda
 645476040cb70a5c6d547021a760b104 *data/us.ref.rda
 9a802cf980bc9a368d8fdb6871c1e399 *data/who.ref.rda
@@ -51,6 +53,7 @@ adf507f9579eed5305ac39dbec3e0b1e *man/fredriks05.ref.Rd
 e0fbacb0a971008cc810da2baa3fd74e *man/kiggs.ref.Rd
 c3c615dce24ece20a3613a2846144468 *man/kiggs_bp.ref.Rd
 e78ee42cea966644c6263ebd9f51530a *man/kro.ref.Rd
+96d6e51bf6afafd35dbe2fdb5de3a2e3 *man/life_liver.ref.Rd
 73695c419dc19ef72575e66adce94e72 *man/lipids.ref.Rd
 25957ea206574cbc67a4f09511efd401 *man/make_percentile_tab.Rd
 188361fb09e9c6608741d025f3eb8d4a *man/nl3.ref.Rd
@@ -67,6 +70,7 @@ c76445795fc25ba6f6628eaa76b71b53 *man/sds.Rd
 2ab0ff6aca28a98f5bd80c98cd6c2c7e *man/show-ParTab-method.Rd
 17cb04f6261bbc2bf0012a3fdf9ae78f *man/show-RefGroup-method.Rd
 79f5a910adfc7184f869418c4c4146a6 *man/turkish.ref.Rd
+7bbc8bd1c65590125665ab01743aa709 *man/uk1990.ref.Rd
 5258106cea0cefd3f775f95485c2c2be *man/ukwho.ref.Rd
 fb9e10105b9532f887760c300a0a82c4 *man/us.ref.Rd
 23730d686fb981d6d717cd41a1cf1e2e *man/who.ref.Rd

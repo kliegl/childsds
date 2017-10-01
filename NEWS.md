@@ -1,3 +1,8 @@
+# childsds 0.6.7
+## Major changes
+* add uk1990 references
+* add liver enzymes references
+## Minor changes
 # childsds 0.6.6
 ## Major changes
 * add ggplot version of the worm plot function

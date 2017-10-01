@@ -1,12 +1,12 @@
 Package: childsds
 Title: Data and Methods Around Reference Values in Pediatrics
-Version: 0.6.6
+Version: 0.6.7
 Authors@R: person("Mandy", "Vogel", email = "mandy.vogel@googlemail.com", role = c("aut", "cre"))
-Description: Calculation of standard deviation scores adduced from different
+Description: Calculation of standard deviation scores and percentiles adduced from different
     growth standards (WHO, UK, Germany, Italy, China, etc). Therefore, the calculation of SDS-values
     for different measures like BMI, weight, height, head circumference, different
     ratios, etc. are easy to carry out. Also, references for laboratory values in
-    children are available: serum lipids, iron-related blood parameters. In the
+    children and adults are available, e.g., serum lipids, iron-related blood parameters, IGF, liver enzymes. In the
     new version, there are also functions combining the lms() function from package 'gamlss' with
     resampling methods for using with repeated measurements and family dependencies. A searchable list
     of items can be found here: <https://github.com/mvogel78/childsds/wiki>.
@@ -21,8 +21,8 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-09-11 06:13:58 UTC; mandy
+Packaged: 2017-10-01 17:06:15 UTC; mandy
 Author: Mandy Vogel [aut, cre]
 Maintainer: Mandy Vogel <mandy.vogel@googlemail.com>
 Repository: CRAN
-Date/Publication: 2017-09-11 08:25:56 UTC
+Date/Publication: 2017-10-01 19:48:18 UTC
