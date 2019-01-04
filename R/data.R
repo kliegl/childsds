@@ -227,3 +227,41 @@ NULL
 #' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1998. British 1990 growth reference centiles for weight, height, body mass index and head circumference fitted by maximum penalized likelihood. Statistics in medicine 17, 407–429.
 #' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1995. Body mass index reference curves for the UK, 1990. Archives of disease in childhood 73, 25–29.
 NULL
+
+
+#' Parameters from recommendations of the German Adiposity Association (2015, AGA)
+#' @name aga_15.ref
+#' @docType data
+#' @usage aga_15.ref
+#' @source "Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte für den Body-Mass-Index für Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123–7."
+NULL
+
+#' Parameters from Wuehl et al. blood pressure reference values Germany according to age
+#' @name bp_wuehl_age.ref
+#' @docType data
+#' @usage bp_wuehl_age.ref
+#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995."
+NULL
+
+#' Parameters from Wuehl et al. blood pressure reference values Germany according to height
+#' @name bp_wuehl_height.ref
+#' @docType data
+#' @usage bp_wuehl_height.ref
+#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995."
+NULL
+
+#' Parameters for different skinfolds
+#' @name life_skinfold.ref
+#' @docType data
+#' @usage life_skinfold.ref
+#' @source "Roennecke E, Vogel M, Bussler S, Grafe N, Jurkutat A, Schlingmann M, Koerner A, Kiess W. Age- and sex-related percentiles of skinfold thickness, waist and hip circumference, Waist-to- Hip Ratio and Waist-to-Height Ratio: Results from a population-based paediatric cohort in Germany (LIFE Child). Obesity Facts. 2019."
+NULL
+
+
+#' Parameters for different circumferences and whr and whtr
+#' @name life_circ.ref
+#' @docType data
+#' @usage life_circ.ref
+#' @source "Roennecke E, Vogel M, Bussler S, Grafe N, Jurkutat A, Schlingmann M, Koerner A, Kiess W. Age- and sex-related percentiles of skinfold thickness, waist and hip circumference, Waist-to- Hip Ratio and Waist-to-Height Ratio: Results from a population-based paediatric cohort in Germany (LIFE Child). Obesity Facts. 2019."
+NULL
+

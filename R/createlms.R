@@ -135,12 +135,58 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.
     invisible(return(NULL))
 }
 
+##' fit gamlss
+##'
+##' wrapper around the \code{\link[VGAM]{vgam}} function in the VGAM package
+##' returns the fitted lms-parameter at given age points
+##' the function is called inside \code{\link{do_iterations}} and may not called directly
+##' @title fit lms parameters via VGAM
+##' @param data dataframe as return by select_meas()
+##' @param age.min lower bound of age
+##' @param age.max upper bound of age
+##' @param age.int stepwidth of the age variable
+##' @param keep.models indicator whether or not models in each iteration should be kept
+##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+##' @param mu.df degree of freedem location parameter
+##' @param sigma.df degree of freedem spread parameter
+##' @param nu.df degree of freedem skewness parameter
+##' @param value names of the value variable (character) if different from value, ignored
+##' @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
+##' @author mandy
+fit_vgam <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.models = F,
+		       dist = "BCN", mu.df = 4,sigma.df = 3, nu.df = 2, value){
+    tr.obj <- try(mm <-VGAM::vgam(value ~  VGAM::s(age, df = c(mu.df, sigma.df, nu.df)),
+                                  data = dplyr::select(data, -group),
+                                  family = switch(dist,
+                                                  BCN = VGAM::lms.bcn(zero = NULL),
+                                                  YJN = VGAM::lms.yjn(zero = NULL)), trace = F))
+    if("try-error" %in% class(tr.obj) ){
+        tr.obj <- try(mm <-VGAM::vgam(value ~  VGAM::s(age, df = c(mu.df, sigma.df, 1)), data = dplyr::select(data, -group),
+                                      family = VGAM::lms.bcn(zero = NULL), trace = F))
+    }
+    if(!exists("mm") || is.null(mm)) invisible(return(NULL)) 
+    age <- seq(age.min, age.max, by = age.int)
+    if (!("try-error" %in% class(tr.obj))) {
+	lms <- as.data.frame(VGAM::predict(mm,
+					newdata = data.frame(age = age)))
+        names(lms) <- c("nu","mu","sigma")
+        lms$age <- age
+        lms$sigma <- exp(lms$sigma)
+	lms %<>% dplyr::select(age, dplyr::everything())
+	if(!keep.models) mm <- NULL
+	return(list(lms = lms, model = mm))
+    }
+    invisible(return(NULL))
+}
+
+
 ##' one iteration
 ##'
 ##' function samples families then measurements and fits the model
 ##' the function is called inside \code{\link{do_iterations}} and may not called directly
 ##' @title one iteration
 ##' @param data.list list of dataframes as returned by prepare_data
+##' @param method use vgam or gamlss
 ##' @param prop.fam proportion of families to be sampled
 ##' @param prop.subject proportion of subject to be sampled
 ##' @param age.min lower bound of age
@@ -148,6 +194,10 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.
 ##' @param age.int stepwidth of the age variable
 ##' @param keep.models indicator whether or not models in each iteration should be kept
 ##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+##' @param formula formula for the location parameter
+##' @param sigma.formula formula for the sigma parameter
+##' @param nu.formula formula for the nu parameter
+##' @param tau.formula formula for the tau parameter
 ##' @param sigma.df degree of freedem spread parameter
 ##' @param nu.df degree of freedem skewness parameter
 ##' @param mu.df degree of freedem location parameter
@@ -155,17 +205,37 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.
 ##' @param verbose whether or not information about sampling will be printed during while iterate
 ##' @param trans.x indicator wether age should be transformed or not
 ##' @param lim.trans limits for the exponent of transformation of age
+##' @param method.pb GAIC or ML
 ##' @return list of lists each containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 ##' @author Mandy Vogel
 ##' @export
-one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
-                          keep.models = F, dist = "BCCGo", sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2,
-                          verbose = F,trans.x = F, lim.trans = c(0,1.5)){
+one_iteration <- function(data.list, method, prop.fam = 0.75, prop.subject = 1,
+                          age.min = 0, age.max = 18, age.int = 1/12,
+                          keep.models = F,
+                          dist = "BCCGo",
+                          formula = NULL,
+                          sigma.df = 3, nu.df = 2, mu.df = 4, tau.df = 2,
+                          sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
+                          verbose = F,trans.x = F, lim.trans = c(0,1.5),
+                          method.pb = "ML"
+
+                          ){
     tmp.l <- lapply(data.list, select_fams, prop = prop.fam, verbose = verbose)
     tmp.l <- lapply(tmp.l, select_meas, prop = prop.subject, verbose = verbose)
-    lapply(tmp.l, fit_gamlss, dist = dist, keep.models = keep.models,
-           sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df,
-           age.min = age.min, age.max = age.max, trans.x = trans.x, lim.trans = lim.trans)
+    switch(method,
+           gamlss = lapply(tmp.l, fit_gamlss, dist = dist, keep.models = keep.models,
+                           sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df, tau.df = tau.df,
+                           age.min = age.min, age.max = age.max, trans.x = trans.x, lim.trans = lim.trans),
+           vgam = lapply(tmp.l, fit_vgam, dist = dist, keep.models = keep.models,
+                         sigma.df = sigma.df, nu.df = nu.df, mu.df = mu.df,
+                         age.min = age.min, age.max = age.max),
+           gamlss1 = lapply(tmp.l, fit_gamlss1, dist = dist, keep.models = keep.models,
+                            sigma.formula = sigma.formula,
+                            nu.formula = nu.formula,
+                            tau.formula = tau.formula,
+                            formula = formula, method.pb = method.pb,
+                            age.min = age.min, age.max = age.max)
+           )
 }
 
 ##' Do lms iterations 
@@ -180,9 +250,14 @@ one_iteration <- function(data.list, prop.fam = 0.75, prop.subject = 1, age.min 
 ##' @return list of lists for models and fitted parameters
 ##' @author Mandy Vogel
 ##' @export
-do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, prop.subject = 1,
+do_iterations <- function(data.list, n = 10, max.it = 1000,
+                          method = "gamlss", prop.fam = 0.75, prop.subject = 1,
                           age.min = 0, age.max = 18, age.int = 1/12,keep.models = F,
-                          dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F,
+                          dist = "BCCGo",
+                          mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F,
+                          formula = NULL, 
+                          sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
+                          method.pb = "ML",
                           trans.x = F, lim.trans = c(0,1.5)){
     range.age <- range(unlist(lapply(data.list, function(df) df$age)))
     if(age.min < (range.age[1] - 0.01*range.age[1])) {
@@ -200,6 +275,7 @@ do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, pro
     names(counter) <- sexes
     while(i <= max.it & min(counter[1,]) < n ){
         tmp.res <- one_iteration(data.list = data.list,
+                                 method = method,
                                  dist = dist,
                                  keep.models = keep.models,
                                  mu.df = mu.df,
@@ -212,7 +288,12 @@ do_iterations <- function(data.list, n = 10, max.it = 1000, prop.fam = 0.75, pro
                                  age.max = age.max,
                                  verbose = verbose,
                                  trans.x = trans.x,
-                                 lim.trans = lim.trans)
+                                 lim.trans = lim.trans,
+                                 formula = formula,
+                                 sigma.formula = sigma.formula,
+                                 tau.formula = tau.formula,
+                                 nu.formula = nu.formula
+                                 )
         fit_succ <- as.data.frame(lapply(tmp.res, function(x) as.numeric(!is.null(x))))
         counter <- as.data.frame(t(colSums(dplyr::bind_rows(counter,fit_succ))))
         print(fit_succ)
@@ -303,7 +384,7 @@ calc_confints <- function(lms.list, perc = c(2.5,5,50,95,97.5), level = 0.95, ty
             pm <- sapply(res.l, function(xx, perc){
                 xx[,perc]
             }, perc = perc)
-            pm <- as.data.frame(t(boot::envelope(mat = t(pm))[[type]]))
+            pm <- as.data.frame(t(boot::envelope(mat = t(pm), level = level)[[type]]))
             names(pm) <- c("upper","lower")
             pm
         })
@@ -327,4 +408,64 @@ find.nearest.month <- function(x){
     ind <- which.min(abs(rem - 0:11/12))
     rem <- (0:11/12)[ind]
     full + rem
+}
+
+
+##' fit_gamlss
+##' 
+##' wrapper around the \code{\link[gamlss]{gamlss}} function from the gamlss package
+##' returns the fitted lms-parameter at given age points
+##' the function is called inside \code{\link{do_iterations}} and may not be called directly
+##' @title fit_gamlss1
+##' @param data dataframe as return by select_meas()
+##' @param age.min lower bound of age
+##' @param age.max upper bound of age
+##' @param age.int stepwidth of the age variable
+##' @param keep.models indicator whether or not models in each iteration should be kept
+##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+##' @param formula formula for the location parameter
+##' @param sigma.formula formula for the sigma parameter
+##' @param nu.formula formula for the nu parameter
+##' @param tau.formula formula for the tau parameter
+##' @param method.pb GAIC or ML
+##' @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
+##' @author Mandy Vogel
+fit_gamlss1 <- function(data, age.min = 0, age.max = 80, age.int = 1/12, keep.models = F,
+                        dist = "BCCGo", formula = NULL, 
+                        sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
+                        method.pb = "ML"){
+    formula <- formula(formula)
+    tr.obj <- try(mm <- gamlss::gamlss(formula,
+                                       sigma.formula = sigma.formula,
+                                       nu.formula = nu.formula,
+                                       tau.formula = tau.formula,
+                                       family = dist,
+                                       method.pb = method.pb,
+                                       k = 2,trace = F,
+                                       data = data[,-grep("group",names(data))],
+                                       ))
+    if("try-error" %in% class(tr.obj) ){
+            tr.obj <- try(mm <- gamlss::gamlss(formula,
+                                               sigma.formula = sigma.formula,
+                                               nu.formula = nu.formula,
+                                               tau.formula = ~ 1,
+                                               family = dist,
+                                               method.pb = "GAIC",
+                                               k = 2,trace = F,
+                                               data = data[,-grep("group",names(data))],
+                                               ))
+    }
+    if(!exists("mm") || is.null(mm)) invisible(return(NULL)) 
+    age <- seq(age.min, age.max, by = age.int)
+    if (mm$family[1] == dist & !("try-error" %in% class(tr.obj))) {
+        lms <- as.data.frame(gamlss::predictAll(mm,
+                                                newdata = data.frame(age = age),
+                                                data = data
+                                                ))
+        lms$age <- age
+        lms <- lms %>% dplyr::select(age, dplyr::everything())
+        if(!keep.models) mm <- NULL
+        return(list(lms = lms, model = mm))
+    }
+    invisible(return(NULL))
 }

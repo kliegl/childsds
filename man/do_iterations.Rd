@@ -4,10 +4,13 @@
 \alias{do_iterations}
 \title{do lms iterations}
 \usage{
-do_iterations(data.list, n = 10, max.it = 1000, prop.fam = 0.75,
-  prop.subject = 1, age.min = 0, age.max = 18, age.int = 1/12,
-  keep.models = F, dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2,
-  tau.df = 2, verbose = F, trans.x = F, lim.trans = c(0, 1.5))
+do_iterations(data.list, n = 10, max.it = 1000, method = "gamlss",
+  prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18,
+  age.int = 1/12, keep.models = F, dist = "BCCGo", mu.df = 4,
+  sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F,
+  formula = NULL, sigma.formula = ~1, nu.formula = ~1,
+  tau.formula = ~1, method.pb = "ML", trans.x = F, lim.trans = c(0,
+  1.5))
 }
 \arguments{
 \item{data.list}{list of dataframes as returned by prepare_data}
@@ -15,6 +18,8 @@ do_iterations(data.list, n = 10, max.it = 1000, prop.fam = 0.75,
 \item{n}{number of desired fits}
 
 \item{max.it}{maximum number of iterations that will be run}
+
+\item{method}{use vgam or gamlss}
 
 \item{prop.fam}{proportion of families to be sampled}
 
@@ -39,6 +44,16 @@ do_iterations(data.list, n = 10, max.it = 1000, prop.fam = 0.75,
 \item{tau.df}{degree of freedem kurtosis parameter}
 
 \item{verbose}{whether or not information about sampling will be printed during while iterate}
+
+\item{formula}{formula for the location parameter}
+
+\item{sigma.formula}{formula for the sigma parameter}
+
+\item{nu.formula}{formula for the nu parameter}
+
+\item{tau.formula}{formula for the tau parameter}
+
+\item{method.pb}{GAIC or ML}
 
 \item{trans.x}{indicator wether age should be transformed or not}
 

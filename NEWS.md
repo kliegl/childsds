@@ -1,8 +1,21 @@
-# childsds 0.6.7
+# childsds 0.7.0
 ## Major changes
+* add aga15 references
+* add skinfold references
+* add wuehl blood pressure references
+* add whr, whtr references
+* replace explicite loop in sds() function
+## Minor changes
+
+## childsds 0.6.7 ##
+
+### Major changes ###
+
 * add uk1990 references
 * add liver enzymes references
-## Minor changes
+
+### Minor changes ###
+
 # childsds 0.6.6
 ## Major changes
 * add ggplot version of the worm plot function

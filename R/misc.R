@@ -49,6 +49,7 @@ make_percentile_tab <- function (ref, item, perc = c(2.5, 5, 50, 95, 97.5), stac
     perc <- perc/100
     sexes <- c(male = "male", female = "female")
     pertab <- lapply(sexes, function(sex) {
+        if(!sex %in% names(reftabs)) return(NULL)
         perc.values <- lapply(perc, function(p) {
             round(eval(parse(text = paste0("gamlss.dist::q", dists[sex], 
                                      "(", p, ",", paste(paste0(names(reftabs[[sex]])[-1], 
@@ -63,6 +64,7 @@ make_percentile_tab <- function (ref, item, perc = c(2.5, 5, 50, 95, 97.5), stac
             perc.values <- dplyr::bind_cols(perc.values, round(reftabs[[sex]][-1], digits))
         perc.values
     })
+    pertab <- purrr::compact(pertab)
     res <- Reduce(rbind, pertab)
     if (requireNamespace("reshape2") & stack){
         return(reshape2::melt(res, id.vars = c("age", "sex")))
