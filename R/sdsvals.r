@@ -62,7 +62,11 @@ sds <- function(value, age, sex, item, ref, type = "SDS", male = "male", female 
                                                        param, xout = tmpdf$age, rule = 1)$y)
         mm$q <- tmpdf$value
         mm$age <- NULL
-        do.call(get(paste0("p",dists[[sex]]), asNamespace("gamlss.dist")), mm)
+        compl <- stats::complete.cases(as.data.frame(mm))
+        mm2 <- purrr::map(mm, function(x) x[compl])
+        rescol <- rep(NA_real_, nrow(tmpdf))
+        rescol[compl] <- do.call(get(paste0("p",dists[[sex]]), asNamespace("gamlss.dist")), mm2)
+        rescol
     })
     perc <- as.data.frame(params)
     perc$res <- ifelse(sex == "male", perc$male, perc$female)

@@ -10,7 +10,7 @@ wormplot_gg(m = NULL, residuals = NULL, age = NA, n.inter = 1,
 \arguments{
 \item{m}{a gamlss model}
 
-\item{residuals}{normalized quantile residuals}
+\item{residuals}{nlormalized quantile residuals}
 
 \item{age}{numeric vector of ages}
 

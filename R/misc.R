@@ -28,43 +28,38 @@
 ##' @export
 make_percentile_tab <- function (ref, item, perc = c(2.5, 5, 50, 95, 97.5), stack = F,
                                  age = NULL, include.pars = T, digits = 4, sex ) {
-    if(stack) include.pars <- F 
-    reftabs <- ref@refs[[item]]@params
-    if(is.null(age)) age <- ref@refs[[item]]@params[[1]]$age
-    res <- list()
-    for(df in reftabs){
-        df2 <- as.data.frame(lapply(df[,-which(names(df)=="age")], 
-                                    function(col){
-                                        stats::approx(x = df$age, y =  col, xout = age, rule = 2)$y 
-                                    }))
-        df2$age <- age
-        df2 <- dplyr::select(df2, age, dplyr::everything())
-        res[[length(res)+1]] <- df2
-    }
-    names(res) <- names(reftabs)
-    reftabs <- res 
+    if(stack) include.pars <- F
+    dists <- unlist(ref@refs[[item]]@dist)    
+    refs <- ref@refs[[item]]@params
+    sexes <- names(refs)
+    if(!is.null(age)) {
+        refs <- purrr::map(refs, function(ref){
+            age <- age[dplyr::between(age, min(ref$age), max(ref$age))]
+            purrr::map(ref,
+                       function(param) stats::approx(x = ref$age,
+                                                     y = param,
+                                                     xout = age,
+                                                     rule = 1)$y)
+        })
+    } 
     nam <- paste(sprintf("perc_%02d", floor(perc)),
                  gsub("0.", "", perc - floor(perc)), sep = "_")
-    dists <- unlist(ref@refs[[item]]@dist)
     perc <- perc/100
-    sexes <- c(male = "male", female = "female")
-    pertab <- lapply(sexes, function(sex) {
-        if(!sex %in% names(reftabs)) return(NULL)
-        perc.values <- lapply(perc, function(p) {
-            round(eval(parse(text = paste0("gamlss.dist::q", dists[sex], 
-                                     "(", p, ",", paste(paste0(names(reftabs[[sex]])[-1], 
-                                                               "=reftabs[[\"", sex, "\"]]$", names(reftabs[[sex]])[-1]), 
-                                                        collapse = ","), ")"))),digits)
+    pertab <- purrr::map2(refs, sexes, function(ref,sex) {
+        params <- base::as.list(ref)
+        params$age <- NULL        
+        res <- purrr::map(perc,function(p) {
+            params$p <- p 
+            do.call(get(paste0("q",dists[sex]), asNamespace("gamlss.dist")), params)
         })
-        names(perc.values) <- nam
-        perc.values$age <- reftabs[[sex]]$age
-        perc.values$sex <- sex
-        perc.values <- as.data.frame(perc.values, stringsAsFactors = F)
+        names(res) <- nam
+        res <- as.data.frame(res)
         if(include.pars)
-            perc.values <- dplyr::bind_cols(perc.values, round(reftabs[[sex]][-1], digits))
-        perc.values
-    })
-    pertab <- purrr::compact(pertab)
+            res <- dplyr::bind_cols(res, round(ref[-1], digits))
+        res$sex <- sex
+        res$age <- ref$age        
+        res 
+    })        
     res <- Reduce(rbind, pertab)
     if (requireNamespace("reshape2") & stack){
         return(reshape2::melt(res, id.vars = c("age", "sex")))
@@ -83,7 +78,7 @@ make_percentile_tab <- function (ref, item, perc = c(2.5, 5, 50, 95, 97.5), stac
 ##' grouped by age intervals
 ##' @title Worm Plot ggplot version
 ##' @param m a gamlss model
-##' @param residuals normalized quantile residuals
+##' @param residuals nlormalized quantile residuals
 ##' @param age numeric vector of ages
 ##' @param n.inter number of age intervals or cut points
 ##' @param y.limits limits of the y-axis

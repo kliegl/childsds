@@ -1,3 +1,8 @@
+# childsds 0.7.1
+## Minor changes
+* bug fix sds() function
+* update make_percentile_tab()
+
 # childsds 0.7.0
 ## Major changes
 * add aga15 references
