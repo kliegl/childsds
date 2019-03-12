@@ -1,6 +1,6 @@
 Package: childsds
 Title: Data and Methods Around Reference Values in Pediatrics
-Version: 0.7.1
+Version: 0.7.3
 Authors@R: person("Mandy", "Vogel", email = "mandy.vogel@googlemail.com", role = c("aut", "cre"))
 Description: Calculation of standard deviation scores and percentiles adduced from different
     growth standards (WHO, UK, Germany, Italy, China, etc). Therefore, the calculation of SDS-values
@@ -20,8 +20,8 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-01-08 18:37:18 UTC; mandy
+Packaged: 2019-03-12 14:36:05 UTC; mandy
 Author: Mandy Vogel [aut, cre]
 Maintainer: Mandy Vogel <mandy.vogel@googlemail.com>
 Repository: CRAN
-Date/Publication: 2019-01-08 21:50:03 UTC
+Date/Publication: 2019-03-12 18:47:04 UTC

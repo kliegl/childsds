@@ -1,3 +1,8 @@
+# childsds 0.7.3
+## Minor changes
+* bug fix nl4 references (thanks to Robert Euser)
+* bug fix make_percentile_tab()
+
 # childsds 0.7.1
 ## Minor changes
 * bug fix sds() function

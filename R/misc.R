@@ -55,7 +55,7 @@ make_percentile_tab <- function (ref, item, perc = c(2.5, 5, 50, 95, 97.5), stac
         names(res) <- nam
         res <- as.data.frame(res)
         if(include.pars)
-            res <- dplyr::bind_cols(res, round(ref[-1], digits))
+            res <- dplyr::bind_cols(res, round(as.data.frame(ref[-1]), digits))
         res$sex <- sex
         res$age <- ref$age        
         res 

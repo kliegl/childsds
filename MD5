@@ -1,9 +1,9 @@
-187cd9345a87dddb1d88f1cbe6791359 *DESCRIPTION
+e009194d856002c20a86c3f541eae99e *DESCRIPTION
 03fefbf759c143c464be75143f9319cf *NAMESPACE
-1f9b768e1abf2f1b096f0445050ac6a1 *NEWS.md
+b3f5cc931f59ba23bf7c0d9f4ea4e0d6 *NEWS.md
 cc2ea3ea1bb9a7a3de6ae21b6421032d *R/createlms.R
 2212d1356d8bb8e5272d66e62bd3ee3f *R/data.R
-9366622665fa7a02643d2d59f9761a03 *R/misc.R
+a25b1b5846f06cee63927ed0eb28de43 *R/misc.R
 9606d7badfe775295edbffa2b2a2a3fd *R/mock.R
 e706c4e957759fd17c8fe51d8b727544 *R/refsclass.r
 865618c9dc8dd3658b6c10ad4753505b *R/sdsvals.r
@@ -29,7 +29,7 @@ f9b526f4ac3dfa33b9e8ed2b371e2c45 *data/life_circ.ref.rda
 959a1dc763ae3e98e3eff93d53bb9635 *data/life_skinfold.ref.rda
 f53cb2aae7f496de12a60f71b625b1ec *data/lipids.ref.rda
 7bc5761c0906b71d9c2db788f0a56e06 *data/nl3.ref.rda
-79b81ffced0214dbea04a872baa0d2fb *data/nl4.ref.rda
+23820dba1f867b7c18f37dcd17350eed *data/nl4.ref.rda
 660e68d5f9dd3f6f59ebfc1d5a4d7f71 *data/portug.ref.rda
 8cae001530e5982ee95623de00a52c1a *data/preterm.ref.rda
 e5e51d055e2b49188145f98908ee335d *data/saudi.ref.rda
