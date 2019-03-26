@@ -236,18 +236,22 @@ NULL
 #' @source "Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte für den Body-Mass-Index für Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123–7."
 NULL
 
-#' Parameters from Wuehl et al. blood pressure reference values Germany according to age
+#' Parameters from Wuehl et al. blood pressure reference values Germany according to age,
+#' from version 0.7.3 unplausible values are replaced by interpolated ones. For the original values
+#' check out earlier versions
 #' @name bp_wuehl_age.ref
 #' @docType data
 #' @usage bp_wuehl_age.ref
-#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995."
+#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995.", implausible values were replaced by interpolated ones from package version 0.7.4
 NULL
 
 #' Parameters from Wuehl et al. blood pressure reference values Germany according to height
+#' from version 0.7.3 unplausible values are replaced by interpolated ones. For the original values
+#' check out earlier versions
 #' @name bp_wuehl_height.ref
 #' @docType data
 #' @usage bp_wuehl_height.ref
-#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995."
+#' @source "Wuehl E, Witte K, Soergel M, Mehls O, Schaefer F, Hypertension  for the GWG on P. Distribution of 24-h ambulatory blood pressure in children: normalized reference values and role of body dimensions. Journal of Hypertension. 2002 Oct;20(10):1995.", implausible values were replaced by interpolated ones from package version 0.7.4
 NULL
 
 #' Parameters for different skinfolds
@@ -265,3 +269,28 @@ NULL
 #' @source "Roennecke E, Vogel M, Bussler S, Grafe N, Jurkutat A, Schlingmann M, Koerner A, Kiess W. Age- and sex-related percentiles of skinfold thickness, waist and hip circumference, Waist-to- Hip Ratio and Waist-to-Height Ratio: Results from a population-based paediatric cohort in Germany (LIFE Child). Obesity Facts. 2019."
 NULL
 
+
+#' Parameters for bodyfat (%), fat mass index (FMI) and lean body mass index (LBMI)
+#' for Whites, Blacks, and Mexican-Americans
+#' @name duran_bf.ref
+#' @docType data
+#' @usage duran_bf.ref
+#' @source "Duran I, Martakis K, Rehberg M, Stark C, Schafmeyer L, Schönau E. Reference Centiles for the Evaluation of Nutritional Status in Children using Body Fat Percentage, Fat Mass and Lean Body Mass Index. Journal of Clinical Densitometry [Internet] 2019 [cited 2019 Mar 19];Available from: https://linkinghub.elsevier.com/retrieve/pii/S1094695018302622"
+NULL
+
+
+#' Parameters for different carotid artery intima-media thickness and distensibility dependent on age
+#' @name doyon_age.ref
+#' @docType data
+#' @usage doyon_age.ref
+#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550–6"
+NULL
+
+
+#' Parameters for different carotid artery intima-media thickness and distensibility
+#' dependent on height
+#' @name doyon_height.ref
+#' @docType data
+#' @usage doyon_height.ref
+#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550–6"
+NULL

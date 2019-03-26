@@ -7,9 +7,10 @@
 do_iterations(data.list, n = 10, max.it = 1000, method = "gamlss",
   prop.fam = 0.75, prop.subject = 1, age.min = 0, age.max = 18,
   age.int = 1/12, keep.models = F, dist = "BCCGo", mu.df = 4,
-  sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F, formula = NULL,
-  sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
-  method.pb = "ML", trans.x = F, lim.trans = c(0, 1.5))
+  sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F,
+  formula = NULL, sigma.formula = ~1, nu.formula = ~1,
+  tau.formula = ~1, method.pb = "ML", trans.x = F, lim.trans = c(0,
+  1.5))
 }
 \arguments{
 \item{data.list}{list of dataframes as returned by prepare_data}

@@ -5,8 +5,8 @@
 \title{fit lms}
 \usage{
 fit_gamlss(data, age.min = 0.25, age.max = 18, age.int = 1/12,
-  keep.models = F, dist = "BCCGo", mu.df = 4, sigma.df = 3, nu.df = 2,
-  tau.df = 2, trans.x = F, lim.trans = c(0, 1.5), value)
+  keep.models = F, dist = "BCCGo", mu.df = 4, sigma.df = 3,
+  nu.df = 2, tau.df = 2, trans.x = F, lim.trans = c(0, 1.5), value)
 }
 \arguments{
 \item{data}{dataframe as return by select_meas()}

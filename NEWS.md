@@ -1,3 +1,12 @@
+# childsds 0.7.4
+## Attention
+* There were some implausible values in the Wuehl referencens. We replaced these values by interpolated ones.
+## Bugs
+* solved bug "The percent BMI code appears to be bugged and is outputting a data.frame."
+## New References
+* Duran et al, bodyfat, fat mass, lean body mass index
+* Doyon et al, carotid artery intima-media thickness, distensibility
+
 # childsds 0.7.3
 ## Minor changes
 * bug fix nl4 references (thanks to Robert Euser)

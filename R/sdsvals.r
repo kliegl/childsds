@@ -72,7 +72,7 @@ sds <- function(value, age, sex, item, ref, type = "SDS", male = "male", female 
     perc$res <- ifelse(sex == "male", perc$male, perc$female)
     perc$res[is.infinite(value)] <- NA
     if(type == "SDS") return(stats::qnorm(perc$res))
-    perc
+    perc$res
 }
 
 
