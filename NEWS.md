@@ -1,3 +1,12 @@
+# childsds 0.7.5
+## Major changes
+* add cn.refs
+* add life_thyr.refs
+* add metabolom.ref
+* add motor.ref
+# childsds 0.7.5
+## Major changes
+* add bone.refs
 # childsds 0.7.4
 ## Attention
 * There were some implausible values in the Wuehl referencens. We replaced these values by interpolated ones.

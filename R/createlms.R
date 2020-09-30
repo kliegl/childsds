@@ -29,8 +29,8 @@ prepare_data <- function(data, group = NULL, subject = "SIC", sex = NULL, value 
         data$sex <- "all"
         sex <- "sex"
     }    
-    data %<>% dplyr::select_(group, subject, value, age, sex)
-    data %<>% dplyr::rename_("subject" = subject,
+    data %<>% dplyr::select(group, subject, value, age, sex)
+    data %<>% dplyr::rename("subject" = subject,
                       "group" = group,
                       "sex" = sex,
                       "value" = value,
@@ -105,18 +105,20 @@ select_meas <- function(data, subject = "subject", prop = 1, verbose = F){
 ##' @param trans.x indicator wether age should be transformed or not
 ##' @param lim.trans limits for the exponent of transformation of age
 ##' @param value names of the value variable (character) if different from value, ignored
+##' @param tmpdata ignored
 ##' @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 ##' @author Mandy Vogel
 fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.models = F,
                        dist = "BCCGo", mu.df = 4,sigma.df = 3, nu.df = 2, tau.df = 2,
-                       trans.x = F, lim.trans = c(0,1.5), value){
-    tr.obj <- try(mm <- gamlss::lms(value, age, data = data[,-grep("group",names(data))],
+                       trans.x = F, lim.trans = c(0,1.5), value, tmpdata){
+    tmpdata <<- dplyr::select(data, -group)
+    tr.obj <- try(mm <- gamlss::lms(value, age, data = tmpdata,
                             families = dist,method.pb = "ML", k = 2,trace = F,
                             mu.df = mu.df, sigma.df = sigma.df,
                             nu.df = nu.df, tau.df = tau.df,
                             trans.x = trans.x, lim.trans = lim.trans))
     if("try-error" %in% class(tr.obj) ){
-        tr.obj <- try(mm <- gamlss::lms(value, age, data = data[,-grep("group",names(data))],
+        tr.obj <- try(mm <- gamlss::lms(value, age, data = tmpdata,
                                         families = dist,method.pb = "ML", k = 2,trace = F,
                                         mu.df = mu.df, sigma.df = sigma.df,
                                         nu.df = nu.df, tau.df = 1,

@@ -4,8 +4,13 @@
 \alias{wormplot_gg}
 \title{Worm Plot ggplot version}
 \usage{
-wormplot_gg(m = NULL, residuals = NULL, age = NA, n.inter = 1,
-  y.limits = c(-1, 1))
+wormplot_gg(
+  m = NULL,
+  residuals = NULL,
+  age = NA,
+  n.inter = 1,
+  y.limits = c(-1, 1)
+)
 }
 \arguments{
 \item{m}{a gamlss model}

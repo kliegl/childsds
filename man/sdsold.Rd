@@ -4,8 +4,16 @@
 \alias{sdsold}
 \title{Calculate SDS Values}
 \usage{
-sdsold(value, age, sex, item, ref, type = "SDS", male = "male",
-  female = "female")
+sdsold(
+  value,
+  age,
+  sex,
+  item,
+  ref,
+  type = "SDS",
+  male = "male",
+  female = "female"
+)
 }
 \arguments{
 \item{value}{vector of measurement values}

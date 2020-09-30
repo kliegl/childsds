@@ -4,9 +4,22 @@
 \alias{fit_gamlss}
 \title{fit lms}
 \usage{
-fit_gamlss(data, age.min = 0.25, age.max = 18, age.int = 1/12,
-  keep.models = F, dist = "BCCGo", mu.df = 4, sigma.df = 3,
-  nu.df = 2, tau.df = 2, trans.x = F, lim.trans = c(0, 1.5), value)
+fit_gamlss(
+  data,
+  age.min = 0.25,
+  age.max = 18,
+  age.int = 1/12,
+  keep.models = F,
+  dist = "BCCGo",
+  mu.df = 4,
+  sigma.df = 3,
+  nu.df = 2,
+  tau.df = 2,
+  trans.x = F,
+  lim.trans = c(0, 1.5),
+  value,
+  tmpdata
+)
 }
 \arguments{
 \item{data}{dataframe as return by select_meas()}
@@ -34,6 +47,8 @@ fit_gamlss(data, age.min = 0.25, age.max = 18, age.int = 1/12,
 \item{lim.trans}{limits for the exponent of transformation of age}
 
 \item{value}{names of the value variable (character) if different from value, ignored}
+
+\item{tmpdata}{ignored}
 }
 \value{
 list containing a dataframe of the fitted lms parameter at the given age points and the fitted model

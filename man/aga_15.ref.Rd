@@ -5,7 +5,7 @@
 \alias{aga_15.ref}
 \title{Parameters from recommendations of the German Adiposity Association (2015, AGA)}
 \source{
-"Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte für den Body-Mass-Index für Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123–7."
+"Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte fuer den Body-Mass-Index fuer Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123-7."
 }
 \usage{
 aga_15.ref

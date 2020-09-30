@@ -5,7 +5,7 @@
 \alias{who2007.ref}
 \title{Parameters of skinfold measures derived from Colombian population}
 \source{
-Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660–667.
+Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660-667.
 }
 \usage{
 who2007.ref

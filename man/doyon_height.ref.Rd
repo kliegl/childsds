@@ -6,7 +6,7 @@
 \title{Parameters for different carotid artery intima-media thickness and distensibility
 dependent on height}
 \source{
-"Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550–6"
+"Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550-6"
 }
 \usage{
 doyon_height.ref

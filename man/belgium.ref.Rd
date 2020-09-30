@@ -5,7 +5,7 @@
 \alias{belgium.ref}
 \title{Parameters derived from Flandern population}
 \source{
-Roelants M, Hauspie R, Hoppenbrouwers K. References for growth and pubertal development from birth to 21 years in Flanders, Belgium. Annals of Human Biology. 2009 Dezember;36(6):680–94.
+Roelants M, Hauspie R, Hoppenbrouwers K. References for growth and pubertal development from birth to 21 years in Flanders, Belgium. Annals of Human Biology. 2009 Dezember;36(6):680-94.
 }
 \usage{
 belgium.ref

@@ -4,10 +4,19 @@
 \alias{fit_gamlss1}
 \title{fit_gamlss1}
 \usage{
-fit_gamlss1(data, age.min = 0, age.max = 80, age.int = 1/12,
-  keep.models = F, dist = "BCCGo", formula = NULL,
-  sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
-  method.pb = "ML")
+fit_gamlss1(
+  data,
+  age.min = 0,
+  age.max = 80,
+  age.int = 1/12,
+  keep.models = F,
+  dist = "BCCGo",
+  formula = NULL,
+  sigma.formula = ~1,
+  nu.formula = ~1,
+  tau.formula = ~1,
+  method.pb = "ML"
+)
 }
 \arguments{
 \item{data}{dataframe as return by select_meas()}

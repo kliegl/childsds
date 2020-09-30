@@ -4,8 +4,16 @@
 \alias{prepare_data}
 \title{prepare data for iteration process}
 \usage{
-prepare_data(data, group = NULL, subject = "SIC", sex = NULL,
-  value = "value", age = "age", lb = -Inf, ub = Inf)
+prepare_data(
+  data,
+  group = NULL,
+  subject = "SIC",
+  sex = NULL,
+  value = "value",
+  age = "age",
+  lb = -Inf,
+  ub = Inf
+)
 }
 \arguments{
 \item{data}{dataframe containing measurement values, age, sex, and subject identifier}

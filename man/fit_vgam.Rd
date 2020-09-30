@@ -4,9 +4,18 @@
 \alias{fit_vgam}
 \title{fit lms parameters via VGAM}
 \usage{
-fit_vgam(data, age.min = 0.25, age.max = 18, age.int = 1/12,
-  keep.models = F, dist = "BCN", mu.df = 4, sigma.df = 3,
-  nu.df = 2, value)
+fit_vgam(
+  data,
+  age.min = 0.25,
+  age.max = 18,
+  age.int = 1/12,
+  keep.models = F,
+  dist = "BCN",
+  mu.df = 4,
+  sigma.df = 3,
+  nu.df = 2,
+  value
+)
 }
 \arguments{
 \item{data}{dataframe as return by select_meas()}

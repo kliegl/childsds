@@ -4,8 +4,12 @@
 \alias{calc_confints}
 \title{Calculate confidence intervals}
 \usage{
-calc_confints(lms.list, perc = c(2.5, 5, 50, 95, 97.5), level = 0.95,
-  type = c("point"))
+calc_confints(
+  lms.list,
+  perc = c(2.5, 5, 50, 95, 97.5),
+  level = 0.95,
+  type = c("point")
+)
 }
 \arguments{
 \item{lms.list}{lms part of the returned list of \code{\link{do_iterations}}}

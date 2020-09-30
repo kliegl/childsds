@@ -4,8 +4,17 @@
 \alias{sds_2d}
 \title{Calculate SDS Values for 2-dimensional matrix of covariates}
 \usage{
-sds_2d(value, age, x2, sex, item, ref, type = "SDS", male = "male",
-  female = "female")
+sds_2d(
+  value,
+  age,
+  x2,
+  sex,
+  item,
+  ref,
+  type = "SDS",
+  male = "male",
+  female = "female"
+)
 }
 \arguments{
 \item{value}{vector of measurement values}

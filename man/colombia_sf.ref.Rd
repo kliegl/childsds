@@ -5,7 +5,7 @@
 \alias{colombia_sf.ref}
 \title{Parameters of skinfold measures derived from Colombian population}
 \source{
-Ramírez-Vélez, R. et al. Triceps and Subscapular Skinfold Thickness Percentiles and Cut-Offs for Overweight and Obesity in a Population-Based Sample of Schoolchildren and Adolescents in Bogota, Colombia. Nutrients 8, (2016).
+Ramirez-Velez, R. et al. Triceps and Subscapular Skinfold Thickness Percentiles and Cut-Offs for Overweight and Obesity in a Population-Based Sample of Schoolchildren and Adolescents in Bogota, Colombia. Nutrients 8, (2016).
 }
 \usage{
 colombia_sf.ref

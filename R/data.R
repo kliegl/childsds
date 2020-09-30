@@ -64,8 +64,8 @@ NULL
 #' @name turkish.ref
 #' @docType data
 #' @usage turkish.ref
-#' @source Hatipoglu, N. et al. Waist circumference percentiles for 7- to 17-year-old Turkish children and adolescents. Eur J Pediatr 167, 383--389 (2008);Bundak, R. et al. Body mass index references for Turkish children. Acta Pædiatrica 95, 194--198 (2006).
-#' @source Neyzi, O., Furman, A., Bundak, R., Gunoz, H., Darendeliler, F., Bas, F., 2006. Growth references for Turkish children aged 6 to 18 years. Acta Pædiatrica 95, 1635–1641. doi:10.1080/08035250600652013
+#' @source Hatipoglu, N. et al. Waist circumference percentiles for 7- to 17-year-old Turkish children and adolescents. Eur J Pediatr 167, 383--389 (2008);Bundak, R. et al. Body mass index references for Turkish children. Acta Paediatrica 95, 194--198 (2006).
+#' @source Neyzi, O., Furman, A., Bundak, R., Gunoz, H., Darendeliler, F., Bas, F., 2006. Growth references for Turkish children aged 6 to 18 years. Acta Paediatrica 95, 1635-1641. doi:10.1080/08035250600652013
 #' @source Bundak, R. et al. Body mass index references for Turkish children. Acta Paediatrica 95, 194-198 (2006).
 NULL
 
@@ -91,14 +91,14 @@ NULL
 #' @docType data
 #' @usage saudi.ref
 #' @source Mouzan, M. I. E., Salloum, A. A. A., Alqurashi, M. M., Herbish, A. S. A. & Omar, A. A. The LMS and Z scale growth reference for Saudi school-age children and adolescents. Saudi Journal of Gastroenterology 22, 331 (2016)
-#' @source Shaik, S.A., El Mouzan, M.I., AlSalloum, A.A., AlHerbish, A.S., 2016. Growth reference for Saudi preschool children: LMS parameters and percentiles. Ann Saudi Med 36, 2–6. doi:10.5144/0256-4947.2016.2
+#' @source Shaik, S.A., El Mouzan, M.I., AlSalloum, A.A., AlHerbish, A.S., 2016. Growth reference for Saudi preschool children: LMS parameters and percentiles. Ann Saudi Med 36, 2-6. doi:10.5144/0256-4947.2016.2
 NULL
 
 
 #' Parameters derived Ethiopian children
 #' @name ethiop.ref
 #' @docType data
-#' @usage ehtiop.ref
+#' @usage ethiop.ref
 #' @source Amare, E. B. et al. Reference Ranges for Head Circumference in Ethiopian Children 0--2 Years of Age. World Neurosurgery 84, 1566--1571.e2 (2015).
 NULL
 
@@ -156,7 +156,7 @@ NULL
 #' @name belgium.ref
 #' @docType data
 #' @usage belgium.ref
-#' @source Roelants M, Hauspie R, Hoppenbrouwers K. References for growth and pubertal development from birth to 21 years in Flanders, Belgium. Annals of Human Biology. 2009 Dezember;36(6):680–94.
+#' @source Roelants M, Hauspie R, Hoppenbrouwers K. References for growth and pubertal development from birth to 21 years in Flanders, Belgium. Annals of Human Biology. 2009 Dezember;36(6):680-94.
 NULL
 
 
@@ -164,7 +164,7 @@ NULL
 #' @name colombia_sf.ref
 #' @docType data
 #' @usage colombia_sf.ref
-#' @source Ramírez-Vélez, R. et al. Triceps and Subscapular Skinfold Thickness Percentiles and Cut-Offs for Overweight and Obesity in a Population-Based Sample of Schoolchildren and Adolescents in Bogota, Colombia. Nutrients 8, (2016).
+#' @source Ramirez-Velez, R. et al. Triceps and Subscapular Skinfold Thickness Percentiles and Cut-Offs for Overweight and Obesity in a Population-Based Sample of Schoolchildren and Adolescents in Bogota, Colombia. Nutrients 8, (2016).
 NULL
 
 
@@ -172,7 +172,7 @@ NULL
 #' @name who2007.ref
 #' @docType data
 #' @usage who2007.ref
-#' @source Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660–667.
+#' @source Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660-667.
 NULL
 
 
@@ -180,8 +180,8 @@ NULL
 #' @name nl3.ref
 #' @docType data
 #' @usage nl3.ref
-#' @source Fredriks, A. M. et al. Continuing positive secular growth change in The Netherlands 1955–1997. Pediatric research 47, 316–323 (2000).
-#' @source Fredriks, A.M., van Buuren, S., Wit, J.M., Verloove-Vanhorick, S.P., 2000. Body index measurements in 1996–7 compared with 1980. Archives of disease in childhood 82, 107–112.
+#' @source Fredriks, A. M. et al. Continuing positive secular growth change in The Netherlands 1955-1997. Pediatric research 47, 316-323 (2000).
+#' @source Fredriks, A.M., van Buuren, S., Wit, J.M., Verloove-Vanhorick, S.P., 2000. Body index measurements in 1996-7 compared with 1980. Archives of disease in childhood 82, 107-112.
 #' @source https://cran.r-project.org/package=AGD
 NULL
 
@@ -190,7 +190,7 @@ NULL
 #' @name japan_lab.ref
 #' @docType data
 #' @usage japan_lab.ref
-#' @source Isojima, T., Shimatsu, A., Yokoya, S., Chihara, K., Tanaka, T., Hizuka, N., Teramoto, A., Tatsumi, K., Tachibana, K., Katsumata, N., Horikawa, R., 2012. Standardized centile curves and reference intervals of serum insulin-like growth factor-I (IGF-I) levels in a normal Japanese population using the LMS method. Endocrine Journal 59, 771–780. doi:10.1507/endocrj.EJ12-0110
+#' @source Isojima, T., Shimatsu, A., Yokoya, S., Chihara, K., Tanaka, T., Hizuka, N., Teramoto, A., Tatsumi, K., Tachibana, K., Katsumata, N., Horikawa, R., 2012. Standardized centile curves and reference intervals of serum insulin-like growth factor-I (IGF-I) levels in a normal Japanese population using the LMS method. Endocrine Journal 59, 771-780. doi:10.1507/endocrj.EJ12-0110
 NULL
 
 
@@ -198,8 +198,8 @@ NULL
 #' @name international_lab.ref
 #' @docType data
 #' @usage international_lab.ref
-#' @source Bidlingmaier, M., Friedrich, N., Emeny, R.T., Spranger, J., Wolthers, O.D., Roswall, J., Körner, A., Obermayer-Pietsch, B., Hübener, C., Dahlgren, J., others, 2014. Reference intervals for insulin-like growth factor-1 (IGF-I) from birth to senescence: results from a multicenter study using a new automated chemiluminescence IGF-I immunoassay conforming to recent international recommendations. The Journal of Clinical Endocrinology & Metabolism 99, 1712–1721.
-#' @source Friedrich, N., Wolthers, O.D., Arafat, A.M., Emeny, R.T., Spranger, J., Roswall, J., Kratzsch, J., Grabe, H.J., Hübener, C., Pfeiffer, A.F.H., Döring, A., Bielohuby, M., Dahlgren, J., Frystyk, J., Wallaschofski, H., Bidlingmaier, M., 2014. Age- and Sex-Specific Reference Intervals Across Life Span for Insulin-Like Growth Factor Binding Protein 3 (IGFBP-3) and the IGF-I to IGFBP-3 Ratio Measured by New Automated Chemiluminescence Assays. The Journal of Clinical Endocrinology & Metabolism 99, 1675–1686. doi:10.1210/jc.2013-3060
+#' @source Bidlingmaier, M., Friedrich, N., Emeny, R.T., Spranger, J., Wolthers, O.D., Roswall, J., Koerner, A., Obermayer-Pietsch, B., Huebener, C., Dahlgren, J., others, 2014. Reference intervals for insulin-like growth factor-1 (IGF-I) from birth to senescence: results from a multicenter study using a new automated chemiluminescence IGF-I immunoassay conforming to recent international recommendations. The Journal of Clinical Endocrinology & Metabolism 99, 1712-1721.
+#' @source Friedrich, N., Wolthers, O.D., Arafat, A.M., Emeny, R.T., Spranger, J., Roswall, J., Kratzsch, J., Grabe, H.J., Huebener, C., Pfeiffer, A.F.H., Doering, A., Bielohuby, M., Dahlgren, J., Frystyk, J., Wallaschofski, H., Bidlingmaier, M., 2014. Age- and Sex-Specific Reference Intervals Across Life Span for Insulin-Like Growth Factor Binding Protein 3 (IGFBP-3) and the IGF-I to IGFBP-3 Ratio Measured by New Automated Chemiluminescence Assays. The Journal of Clinical Endocrinology & Metabolism 99, 1675-1686. doi:10.1210/jc.2013-3060
 NULL
 
 
@@ -207,7 +207,7 @@ NULL
 #' @name preterm.ref
 #' @docType data
 #' @usage preterm.ref
-#' @source Olsen, I.E., Lawson, M.L., Ferguson, A.N., Cantrell, R., Grabich, S.C., Zemel, B.S., Clark, R.H., 2015. BMI Curves for Preterm Infants. PEDIATRICS 135, e572–e581. doi:10.1542/peds.2014-2777
+#' @source Olsen, I.E., Lawson, M.L., Ferguson, A.N., Cantrell, R., Grabich, S.C., Zemel, B.S., Clark, R.H., 2015. BMI Curves for Preterm Infants. PEDIATRICS 135, e572-e581. doi:10.1542/peds.2014-2777
 #' @source Olsen, I.E., Groveman, S.A., Lawson, M.L., Clark, R.H., Zemel, B.S., 2010. New intrauterine growth curves based on United States data. Pediatrics 125, e214-224. doi:10.1542/peds.2009-0913
 NULL
 
@@ -224,8 +224,8 @@ NULL
 #' @name uk1990.ref
 #' @docType data
 #' @usage uk1990.ref
-#' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1998. British 1990 growth reference centiles for weight, height, body mass index and head circumference fitted by maximum penalized likelihood. Statistics in medicine 17, 407–429.
-#' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1995. Body mass index reference curves for the UK, 1990. Archives of disease in childhood 73, 25–29.
+#' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1998. British 1990 growth reference centiles for weight, height, body mass index and head circumference fitted by maximum penalized likelihood. Statistics in medicine 17, 407-429.
+#' @source Cole, T.J., Freeman, J.V., Preece, M.A., 1995. Body mass index reference curves for the UK, 1990. Archives of disease in childhood 73, 25-29.
 NULL
 
 
@@ -233,7 +233,7 @@ NULL
 #' @name aga_15.ref
 #' @docType data
 #' @usage aga_15.ref
-#' @source "Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte für den Body-Mass-Index für Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123–7."
+#' @source "Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte fuer den Body-Mass-Index fuer Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123-7."
 NULL
 
 #' Parameters from Wuehl et al. blood pressure reference values Germany according to age,
@@ -275,7 +275,7 @@ NULL
 #' @name duran_bf.ref
 #' @docType data
 #' @usage duran_bf.ref
-#' @source "Duran I, Martakis K, Rehberg M, Stark C, Schafmeyer L, Schönau E. Reference Centiles for the Evaluation of Nutritional Status in Children using Body Fat Percentage, Fat Mass and Lean Body Mass Index. Journal of Clinical Densitometry [Internet] 2019 [cited 2019 Mar 19];Available from: https://linkinghub.elsevier.com/retrieve/pii/S1094695018302622"
+#' @source "Duran I, Martakis K, Rehberg M, Stark C, Schafmeyer L, Schoenau E. Reference Centiles for the Evaluation of Nutritional Status in Children using Body Fat Percentage, Fat Mass and Lean Body Mass Index. Journal of Clinical Densitometry [Internet] 2019 [cited 2019 Mar 19];Available from: https://linkinghub.elsevier.com/retrieve/pii/S1094695018302622"
 NULL
 
 
@@ -283,7 +283,7 @@ NULL
 #' @name doyon_age.ref
 #' @docType data
 #' @usage doyon_age.ref
-#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550–6"
+#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550-6"
 NULL
 
 
@@ -292,5 +292,49 @@ NULL
 #' @name doyon_height.ref
 #' @docType data
 #' @usage doyon_height.ref
-#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550–6"
+#' @source "Doyon A, Kracht D, Bayazit AK, et al. Carotid artery intima-media thickness and distensibility in children and adolescents: reference values and role of body dimensions. Hypertension 2013;62(3):550-6"
+NULL
+
+
+#' Parameters for different carotid artery intima-media thickness and distensibility
+#' @name bone.ref
+#' @docType data
+#' @usage bone.ref
+#' @source "Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124"
+NULL
+
+
+#' Parameters for 5 subtests of the KiGGS Motorik Module
+#' @name motor.ref
+#' @docType data
+#' @usage motor.ref
+#' @source "Sobek et al. In progress"
+NULL
+
+
+#' Parameters for height of normal weight and obese children from the CrescNet database
+#' dependent on height
+#' @name cn.ref
+#' @docType data
+#' @usage cn.ref
+#' @source "Kempf et al. In progress"
+NULL
+
+
+
+#' Parameters for TSH, FT3, FT4 from the LIFE Child cohort
+#' dependent on height
+#' @name life_thyr.ref
+#' @docType data
+#' @usage life_thyr.ref
+#' @source "Surup et al. In progress"
+NULL
+
+
+#' Parameters for different metabolom parameters from the LIFE Child cohort
+#' dependent on height
+#' @name metabolom.ref
+#' @docType data
+#' @usage metabolom.ref
+#' @source "Hirschel, J., Vogel, M., Baber, R., Garten, A., Beuchel, C., Dietz, Y., Dittrich, J., Körner, A., Kiess, W., & Ceglarek, U. (2020). Relation of Whole Blood Amino Acid and Acylcarnitine Metabolome to Age, Sex, BMI, Puberty, and Metabolic Markers in Children and Adolescents. Metabolites, 10(4), 149. https://doi.org/10.3390/metabo10040149"
 NULL

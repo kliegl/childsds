@@ -8,7 +8,7 @@
 Amare, E. B. et al. Reference Ranges for Head Circumference in Ethiopian Children 0--2 Years of Age. World Neurosurgery 84, 1566--1571.e2 (2015).
 }
 \usage{
-ehtiop.ref
+ethiop.ref
 }
 \description{
 Parameters derived Ethiopian children

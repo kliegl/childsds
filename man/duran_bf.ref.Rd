@@ -6,7 +6,7 @@
 \title{Parameters for bodyfat (%), fat mass index (FMI) and lean body mass index (LBMI)
 for Whites, Blacks, and Mexican-Americans}
 \source{
-"Duran I, Martakis K, Rehberg M, Stark C, Schafmeyer L, Schönau E. Reference Centiles for the Evaluation of Nutritional Status in Children using Body Fat Percentage, Fat Mass and Lean Body Mass Index. Journal of Clinical Densitometry [Internet] 2019 [cited 2019 Mar 19];Available from: https://linkinghub.elsevier.com/retrieve/pii/S1094695018302622"
+"Duran I, Martakis K, Rehberg M, Stark C, Schafmeyer L, Schoenau E. Reference Centiles for the Evaluation of Nutritional Status in Children using Body Fat Percentage, Fat Mass and Lean Body Mass Index. Journal of Clinical Densitometry [Internet] 2019 [cited 2019 Mar 19];Available from: https://linkinghub.elsevier.com/retrieve/pii/S1094695018302622"
 }
 \usage{
 duran_bf.ref
