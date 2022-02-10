@@ -296,11 +296,11 @@ NULL
 NULL
 
 
-#' Parameters for different carotid artery intima-media thickness and distensibility
+#' Parameters for different bone parameters
 #' @name bone.ref
 #' @docType data
 #' @usage bone.ref
-#' @source "Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124"
+#' @source "Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124 and Weber et al. unpublishedfor VitD binding protein"
 NULL
 
 
@@ -323,18 +323,62 @@ NULL
 
 
 #' Parameters for TSH, FT3, FT4 from the LIFE Child cohort
-#' dependent on height
 #' @name life_thyr.ref
 #' @docType data
 #' @usage life_thyr.ref
-#' @source "Surup et al. In progress"
+#' @source "Surup H., Vogel M., Koerner A., Hiemisch A., Oelkers L., Willenberg A., Kiess W., Kratzsch J. (2021). BMI and puberty have to be included into the interpretation of TSH, FT3 and FT4 measurements by new pediatric reference intervals. THYROID."
 NULL
 
 
 #' Parameters for different metabolom parameters from the LIFE Child cohort
-#' dependent on height
 #' @name metabolom.ref
 #' @docType data
 #' @usage metabolom.ref
 #' @source "Hirschel, J., Vogel, M., Baber, R., Garten, A., Beuchel, C., Dietz, Y., Dittrich, J., Körner, A., Kiess, W., & Ceglarek, U. (2020). Relation of Whole Blood Amino Acid and Acylcarnitine Metabolome to Age, Sex, BMI, Puberty, and Metabolic Markers in Children and Adolescents. Metabolites, 10(4), 149. https://doi.org/10.3390/metabo10040149"
+NULL
+
+#' Parameters for different metabolom parameters from the LIFE Child cohort
+#' @name life_cysc.ref
+#' @docType data
+#' @usage life_cysc.ref
+#' @source "Ziegelasch N, Vogel M, Müller E, et al. Cystatin C Serum Levels in Healthy Children Are Related to Age, Gender, and Pubertal Stage. Pediatr Nephrol 2019; 34: 449–57."
+NULL
+
+#' hs-Troponin T and NT-proBNP from the LIFE Child cohort
+#' @name life_heart.ref
+#' @docType data
+#' @usage life_heart.ref
+#' @source "Kiess A, Green J, Willenberg A, et al. Age-dependent reference values for hs-Troponin T and NT-proBNP and determining factors in a cohort of healthy children (The LIFE child study). Pediatric Cardiology 2022. Accepted"
+NULL
+
+
+#' Parameters for the German MoMo study (sports test)
+#' @name momo.ref
+#' @docType data
+#' @usage momo.ref
+#' @source "Niessner C, Utesch T, Oriwol D, et al. Representative Percentile Curves of Physical Fitness From Early Childhood to Early Adulthood: The MoMo Study. Front Public Health 2020;8. Available from: https://www.frontiersin.org/articles/10.3389/fpubh.2020.00458/full?report=reader"
+NULL
+
+
+#' IGF-I and IGF-BP3 from the LIFE Child cohort
+#' @name life_igf.ref
+#' @docType data
+#' @usage life_igf.ref
+#' @source "Hoerenz C, Vogel M, Wirkner K. BMI and contraceptives affect new age-, sex-, and puberty-adjusted IGF-﻿I and IGFBP-﻿3 reference ranges across life span. JCEM 2022 (in (minor) revision)."
+NULL
+
+
+#' Parameters for Cardiovascular Magnetic Resonance
+#' @name kawel_boehm.ref
+#' @docType data
+#' @usage kawel_boehm.ref
+#' @source "Kawel-Boehm N, Hetzel SJ, Ambale-Venkatesh B, et al. Reference ranges (“normal values”) for cardiovascular magnetic resonance (CMR) in adults and children: 2020 update. Journal of Cardiovascular Magnetic Resonance 2020;22(1):87."
+NULL
+
+
+#' Parameters for fibroscan from the LIFE Child cohort
+#' @name life_fibroscan.ref
+#' @docType data
+#' @usage life_fibroscan.ref
+#' @source "preliminary reference values cap med and e med from fibroscan in the life child study. Publication (Puasa et al) in preparation."
 NULL

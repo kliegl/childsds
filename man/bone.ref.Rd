@@ -3,13 +3,13 @@
 \docType{data}
 \name{bone.ref}
 \alias{bone.ref}
-\title{Parameters for different carotid artery intima-media thickness and distensibility}
+\title{Parameters for different bone parameters}
 \source{
-"Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124"
+"Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124 and Weber et al. unpublishedfor VitD binding protein"
 }
 \usage{
 bone.ref
 }
 \description{
-Parameters for different carotid artery intima-media thickness and distensibility
+Parameters for different bone parameters
 }

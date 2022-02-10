@@ -3,8 +3,7 @@
 \docType{data}
 \name{metabolom.ref}
 \alias{metabolom.ref}
-\title{Parameters for different metabolom parameters from the LIFE Child cohort
-dependent on height}
+\title{Parameters for different metabolom parameters from the LIFE Child cohort}
 \source{
 "Hirschel, J., Vogel, M., Baber, R., Garten, A., Beuchel, C., Dietz, Y., Dittrich, J., Körner, A., Kiess, W., & Ceglarek, U. (2020). Relation of Whole Blood Amino Acid and Acylcarnitine Metabolome to Age, Sex, BMI, Puberty, and Metabolic Markers in Children and Adolescents. Metabolites, 10(4), 149. https://doi.org/10.3390/metabo10040149"
 }
@@ -13,5 +12,4 @@ metabolom.ref
 }
 \description{
 Parameters for different metabolom parameters from the LIFE Child cohort
-dependent on height
 }

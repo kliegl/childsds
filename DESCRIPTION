@@ -1,27 +1,22 @@
 Package: childsds
 Title: Data and Methods Around Reference Values in Pediatrics
-Version: 0.7.6
+Version: 0.8.0
 Authors@R: person("Mandy", "Vogel", email = "mandy.vogel@googlemail.com", role = c("aut", "cre"))
 Description: Calculation of standard deviation scores and percentiles adduced from different
-    growth standards (WHO, UK, Germany, Italy, China, etc). Therefore, the calculation of SDS-values
-    for different measures like BMI, weight, height, head circumference, different
-    ratios, etc. are easy to carry out. Also, references for laboratory values in
-    children and adults are available, e.g., serum lipids, iron-related blood parameters, IGF, liver enzymes. In the
-    new version, there are also functions combining the lms() function from package 'gamlss' with
-    resampling methods for using with repeated measurements and family dependencies. A searchable list
-    of items can be found here: <https://github.com/mvogel78/childsds/wiki>.
+    standards (WHO, UK, Germany, Italy, China, etc). Also, references for laboratory values in
+    children and adults are available, e.g., serum lipids, iron-related blood parameters, IGF, liver enzymes. See package documentation for full list.
 Depends: R (>= 3.5.0)
 Imports: gamlss, gamlss.dist, dplyr, magrittr, methods, tidyr, boot,
         class, tibble, reshape2, purrr, purrrlyr, utils, VGAM
 Suggests: ggplot2
-BugReports: https://github.com/mvogel78/childsds/issues
+BugReports: https://git.sc.uni-leipzig.de/my221hepi/childsds/-/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 NeedsCompilation: no
-Packaged: 2020-09-30 10:16:54 UTC; mvogel
+Packaged: 2022-02-10 16:26:09 UTC; mandy
 Author: Mandy Vogel [aut, cre]
 Maintainer: Mandy Vogel <mandy.vogel@googlemail.com>
 Repository: CRAN
-Date/Publication: 2020-09-30 11:00:02 UTC
+Date/Publication: 2022-02-10 16:40:02 UTC

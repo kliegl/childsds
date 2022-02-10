@@ -112,6 +112,7 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.
                        dist = "BCCGo", mu.df = 4,sigma.df = 3, nu.df = 2, tau.df = 2,
                        trans.x = F, lim.trans = c(0,1.5), value, tmpdata){
     tmpdata <<- dplyr::select(data, -group)
+    tmpdata <- dplyr::select(data, -group)
     tr.obj <- try(mm <- gamlss::lms(value, age, data = tmpdata,
                             families = dist,method.pb = "ML", k = 2,trace = F,
                             mu.df = mu.df, sigma.df = sigma.df,

@@ -1,7 +1,14 @@
+# childsds 0.8.0
+## Major changes
+* add life_fibroscan.ref
+* add kawel_boehm.ref
+* add life_igf.ref
+* add life_heart.ref
+* add momo.ref
 # childsds 0.7.5
 ## Major changes
 * add cn.refs
-* add life_thyr.refs
+* add life_thyr.ref
 * add metabolom.ref
 * add motor.ref
 # childsds 0.7.5
@@ -73,7 +80,7 @@
 * add subscapular skinfold to kiggs.ref
 * add function to find better upper and lower age bounds (full month)
 ## Bug fixes
-*  remove user accessable documentation of unexported functions
+*  remove user accessible documentation of unexported functions
 
 # childsds 0.6.2
 ## Major changes
